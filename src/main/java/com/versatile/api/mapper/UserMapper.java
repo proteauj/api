@@ -5,7 +5,7 @@ import com.versatile.api.model.UserModel;
 import org.mapstruct.Mapper;
 
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
     UserModel entityToModel(User user);
     User modelToEntity(UserModel user);

@@ -16,7 +16,7 @@ public class User {
     private int idRole;
     private int idUserType;
 
-    protected User() {}
+    public User() {}
 
     public User(int id, String email, String name, int idRole, int idUserType) {
         this.id = id;
