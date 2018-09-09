@@ -1,0 +1,15 @@
+INSERT INTO Role (description) VALUES ('Administrateur');
+
+INSERT INTO UserType (description) VALUES ('Employé');
+
+INSERT INTO User (email, name, fk_role, fk_userType) VALUES ('julie.proteau@hotmail.com','Julie Proteau',1,1);
+
+INSERT INTO LogIn (password, fk_user) VALUES ('Pauline1',1);
+
+INSERT INTO Car (make, model, year, vin) VALUES ('Mazda', 'CX-9', 2018, 'JM3TCADY1J0204289');
+
+INSERT INTO Job (description, fk_car) VALUES ('Arranger la carrosserie', 1);
+
+INSERT INTO JobTask (name, time, fk_job) VALUES ('Peinturer le hood', 120, 1);
+
+INSERT INTO Part (description, price, isOrdered, isReceived, fk_jobTask) VALUES ('Peinture Couleur xyz', 50.05, true, true, 1);

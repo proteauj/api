@@ -1,0 +1,62 @@
+CREATE DATABASE versatile;
+
+CREATE TABLE Role (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    description varchar(255)
+);
+
+CREATE TABLE UserType (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    description varchar(255)
+);
+
+CREATE TABLE User (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email varchar(255) NOT NULL,
+    name varchar(255),
+    fk_role int NOT NULL,
+    fk_userType int NOT NULL,
+    FOREIGN KEY (fk_role) REFERENCES Role(id),
+    FOREIGN KEY (fk_userType) REFERENCES UserType(id)
+);
+
+CREATE TABLE LogIn (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	password varchar(255) NOT NULL,
+	nbFailedLogin int default 0,
+	fk_user int NOT NULL,
+    FOREIGN KEY (fk_user) REFERENCES User(id)
+);
+
+CREATE TABLE Car (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	make varchar(255) NOT NULL,
+	model varchar(255) NOT NULL,
+	year int NOT NULL,
+	vin varchar(255)
+);
+
+CREATE TABLE Job (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	description varchar(255),
+	fk_car int NOT NULL,
+	FOREIGN KEY (fk_car) REFERENCES Car(id)
+);
+
+CREATE TABLE JobTask (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name varchar(255) NOT NULL,
+	time int,
+	fk_job int NOT NULL,
+	FOREIGN KEY (fk_job) REFERENCES Job(id)
+);
+
+CREATE TABLE Part (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	description varchar(255) NOT NULL,
+	price decimal(8,2) NOT NULL,
+	isOrdered boolean default false,
+	isReceived boolean default false,
+	fk_jobTask int NOT NULL,
+	FOREIGN KEY (fk_jobTask) REFERENCES JobTask(id)
+);
