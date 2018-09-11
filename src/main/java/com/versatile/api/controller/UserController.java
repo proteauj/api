@@ -37,13 +37,13 @@ public class UserController {
         return userService.save(user);
     }
 
-//    @PutMapping("/users/{id}")
-//    UserModel updateUser(@RequestBody UserModel user, @PathVariable int id) {
-//        return userService.updateUser(user, id);
-//    }
-//
-//    @DeleteMapping("/users/{id}")
-//    void deleteUser(@PathVariable int id) {
-//        userService.deleteById(id);
-//    }
+    @PutMapping("/users/{id}")
+    UserModel updateUser(@RequestBody UserModel user, @PathVariable int id) {
+        return userService.updateUser(user, id);
+    }
+
+    @DeleteMapping("/users/{id}")
+    void deleteUser(@PathVariable int id) {
+        userService.deleteById(id);
+    }
 }
