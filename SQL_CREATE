@@ -15,15 +15,15 @@ CREATE TABLE User (
     email varchar(255) NOT NULL,
     name varchar(255),
     fk_role int NOT NULL,
-    fk_userType int NOT NULL,
+    fk_user_type int NOT NULL,
     FOREIGN KEY (fk_role) REFERENCES Role(id),
-    FOREIGN KEY (fk_userType) REFERENCES UserType(id)
+    FOREIGN KEY (fk_user_type) REFERENCES UserType(id)
 );
 
 CREATE TABLE LogIn (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	password varchar(255) NOT NULL,
-	nbFailedLogin int default 0,
+	nb_failed_login int default 0,
 	fk_user int NOT NULL,
     FOREIGN KEY (fk_user) REFERENCES User(id)
 );
@@ -55,8 +55,8 @@ CREATE TABLE Part (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description varchar(255) NOT NULL,
 	price decimal(8,2) NOT NULL,
-	isOrdered boolean default false,
-	isReceived boolean default false,
-	fk_jobTask int NOT NULL,
-	FOREIGN KEY (fk_jobTask) REFERENCES JobTask(id)
+	is_ordered boolean default false,
+	is_received boolean default false,
+	fk_job_task int NOT NULL,
+	FOREIGN KEY (fk_job_task) REFERENCES JobTask(id)
 );
