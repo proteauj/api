@@ -30,10 +30,10 @@ CREATE TABLE LogIn (
 
 CREATE TABLE Car (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	make varchar(255) NOT NULL,
-	model varchar(255) NOT NULL,
+	fk_model int NOT NULL,
 	year int NOT NULL,
 	vin varchar(255)
+    FOREIGN KEY (fk_model) REFERENCES Model(id)
 );
 
 CREATE TABLE Job (
@@ -59,4 +59,29 @@ CREATE TABLE Part (
 	is_received boolean default false,
 	fk_job_task int NOT NULL,
 	FOREIGN KEY (fk_job_task) REFERENCES JobTask(id)
+);
+
+--
+-- Table structure for table `make`
+--
+
+CREATE TABLE IF NOT EXISTS Make (
+  id int NOT NULL AUTO_INCREMENT,
+  code varchar(255) NOT NULL DEFAULT '',
+  title varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (id)
+);
+
+
+--
+-- Table structure for table `model`
+--
+
+CREATE TABLE IF NOT EXISTS Model (
+  id int NOT NULL AUTO_INCREMENT,
+  fk_make int NOT NULL DEFAULT '0',
+  code varchar(255) NOT NULL DEFAULT '',
+  title varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (id),
+  FOREIGN KEY (fk_make) REFERENCES Make(id)
 );
