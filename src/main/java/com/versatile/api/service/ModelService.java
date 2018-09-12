@@ -1,10 +1,13 @@
 package com.versatile.api.service;
 
+import com.versatile.api.entity.Make;
 import com.versatile.api.entity.Model;
 import com.versatile.api.exception.ModelAlreadyExistException;
 import com.versatile.api.exception.ModelNotFoundException;
+import com.versatile.api.mapper.MakeMapper;
 import com.versatile.api.mapper.ModelMapper;
 import com.versatile.api.repository.ModelRepository;
+import com.versatile.api.ressource.MakeRessource;
 import com.versatile.api.ressource.ModelRessource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +22,16 @@ public class ModelService {
     @Autowired
     ModelMapper mapper;
 
+    @Autowired
+    MakeMapper mapperMake;
+
     public List<ModelRessource> getModels() {
         return mapper.entitiesToModels(repository.findAll());
     }
 
-    public List<ModelRessource> getModelsByMake(int idMake) {
-        return mapper.entitiesToModels(repository.findByMake(idMake));
+    public List<ModelRessource> getModelsByMake(MakeRessource make) {
+        Make makeEntity = mapperMake.modelToEntity(make);
+        return mapper.entitiesToModels(repository.findByMake(makeEntity));
     }
 
     public ModelRessource getById(int id) throws ModelNotFoundException {

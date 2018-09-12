@@ -25,10 +25,7 @@ public class ModelController {
         return modelService.getById(id);
     }
 
-    @GetMapping("/models/makes/{id}")
-    List<ModelRessource> getModelsByMake(@PathVariable int id) {
-        return modelService.getModelsByMake(id);
-    }
+
 
     @PostMapping("/models")
     ModelRessource createModel(@RequestBody ModelRessource model) throws ModelAlreadyExistException {
