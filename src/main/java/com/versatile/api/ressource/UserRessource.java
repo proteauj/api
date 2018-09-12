@@ -1,16 +1,16 @@
-package com.versatile.api.model;
+package com.versatile.api.ressource;
 
-public class UserModel {
+public class UserRessource {
     int id;
     String email;
     String name;
     int idRole;
     int idUserType;
 
-    public UserModel() {
+    public UserRessource() {
     }
 
-    public UserModel(int id, String email, String name, int idRole, int idUserType) {
+    public UserRessource(int id, String email, String name, int idRole, int idUserType) {
         this.id = id;
         this.email = email;
         this.name = name;

@@ -4,15 +4,15 @@ import com.versatile.api.entity.User;
 import com.versatile.api.exception.UserAlreadyExistException;
 import com.versatile.api.exception.UserNotFoundException;
 import com.versatile.api.mapper.UserMapper;
-import com.versatile.api.ressource.UserRessource;
 import com.versatile.api.repository.UserRepository;
+import com.versatile.api.ressource.UserRessource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class ModelService {
     @Autowired
     UserRepository repository;
 
