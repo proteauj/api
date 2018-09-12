@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface ModelRepository extends CrudRepository<Model, Integer> {
 
-    Model findByMake(Integer fk_make);
+    List<Model> findByMake(Integer fk_make);
 
     List<Model> findAll();
 
     Model save(Model model);
+
+    Model findByTitle(String title);
 }
