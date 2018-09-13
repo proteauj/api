@@ -1,17 +1,15 @@
 package com.versatile.api.ressource;
 
-import com.versatile.api.entity.Make;
-
 public class ModelRessource {
     private Integer id;
-    private Make make;
+    private MakeRessource make;
     private String code;
     private String title;
 
     public ModelRessource() {
     }
 
-    public ModelRessource(Integer id, Make make, String code, String title) {
+    public ModelRessource(Integer id, MakeRessource make, String code, String title) {
         this.id = id;
         this.make = make;
         this.code = code;
@@ -26,11 +24,11 @@ public class ModelRessource {
         this.id = id;
     }
 
-    public Make getMake() {
+    public MakeRessource getMake() {
         return make;
     }
 
-    public void setMake(Make make) {
+    public void setMake(MakeRessource make) {
         this.make = make;
     }
 
