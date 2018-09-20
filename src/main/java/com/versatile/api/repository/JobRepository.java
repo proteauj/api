@@ -13,7 +13,7 @@ public interface JobRepository extends CrudRepository<Job, Integer> {
 
     Job save(Job job);
 
-    Job findByStatus(Status status);
+    List<Job> findByStatus(Status status);
 
     Job findByCar(Car car);
 }

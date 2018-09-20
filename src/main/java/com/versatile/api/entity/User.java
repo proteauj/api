@@ -11,9 +11,19 @@ public class User {
     private String email;
     private String name;
 
+    /*
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "fk_role")
+    private Role role;
+     */
     @Column(name = "fk_role")
     private int idRole;
 
+    /*
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "fk_userType")
+    private UserType userType;
+     */
     @Column(name = "fk_userType")
     private int idUserType;
 

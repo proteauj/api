@@ -1,6 +1,10 @@
 package com.versatile.api.controller;
 
+import com.versatile.api.exception.CarAlreadyExistException;
+import com.versatile.api.exception.JobAlreadyExistException;
+import com.versatile.api.exception.JobNotFoundException;
 import com.versatile.api.ressource.JobRessource;
+import com.versatile.api.service.CarService;
 import com.versatile.api.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +17,8 @@ public class JobController {
     @Autowired
     JobService jobService;
 
-    @GetMapping("/jobs")
-    public List<JobRessource> getJobs() {
-        return jobService.getJobs();
-    }
+    @Autowired
+    CarService carService;
 
     @GetMapping("/jobs")
     public List<JobRessource> getJobs(@RequestParam(value="status", required=false) String status) {
