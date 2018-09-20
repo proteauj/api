@@ -40,7 +40,9 @@ CREATE TABLE Job (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description varchar(255),
 	fk_car int NOT NULL,
-	FOREIGN KEY (fk_car) REFERENCES Car(id)
+	fk_status int NOT NULL,
+	FOREIGN KEY (fk_car) REFERENCES Car(id),
+	FOREIGN KEY (fk_status) REFERENCES Status(id)
 );
 
 CREATE TABLE JobTask (
@@ -48,7 +50,9 @@ CREATE TABLE JobTask (
 	name varchar(255) NOT NULL,
 	time int,
 	fk_job int NOT NULL,
-	FOREIGN KEY (fk_job) REFERENCES Job(id)
+	fk_status int NOT NULL,
+	FOREIGN KEY (fk_job) REFERENCES Job(id),
+	FOREIGN KEY (fk_status) REFERENCES Status(id)
 );
 
 CREATE TABLE Part (
@@ -84,4 +88,10 @@ CREATE TABLE IF NOT EXISTS Model (
   title varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (id),
   FOREIGN KEY (fk_make) REFERENCES Make(id)
+);
+
+CREATE TABLE IF NOT EXISTS Status (
+  id int NOT NULL AUTO_INCREMENT,
+  status varchar(255) NOT NULL UNIQUE DEFAULT ‘’,
+  PRIMARY KEY (id)
 );

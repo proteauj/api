@@ -8,13 +8,16 @@ INSERT INTO LogIn (password, fk_user) VALUES ('Pauline1',1);
 
 INSERT INTO Car (make, model, year, vin) VALUES ('Mazda', 'CX-9', 2018, 'JM3TCADY1J0204289');
 
-INSERT INTO Job (description, fk_car) VALUES ('Arranger la carrosserie', 1);
+INSERT INTO Job (description, fk_car, fk_status) VALUES ('Arranger la carrosserie', 1);
 
-INSERT INTO JobTask (name, time, fk_job) VALUES ('Peinturer le hood', 120, 1);
+INSERT INTO JobTask (name, time, fk_job, fk_status) VALUES ('Peinturer le hood', 120, 1);
 
 INSERT INTO Part (description, price, isOrdered, isReceived, fk_jobTask) VALUES ('Peinture Couleur xyz', 50.05, true, true, 1);
 
-
+INSERT INTO Status (status) VALUES ("NEW");
+INSERT INTO Status (status) VALUES ("IN_PROGRESS");
+INSERT INTO Status (status) VALUES ("PAUSED");
+INSERT INTO Status (status) VALUES ("FINISHED");
 
 --
 -- Dumping data for table `make`
