@@ -13,7 +13,7 @@ public class Job {
     @JoinColumn(name = "fk_car")
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_status")
     private Status status;
 
