@@ -1,16 +1,13 @@
 package com.versatile.api.service;
 
-import com.versatile.api.entity.Car;
 import com.versatile.api.entity.Job;
-import com.versatile.api.entity.Status;
 import com.versatile.api.exception.JobAlreadyExistException;
 import com.versatile.api.exception.JobNotFoundException;
-import com.versatile.api.mapper.CarMapper;
 import com.versatile.api.mapper.JobMapper;
-import com.versatile.api.repository.CarRepository;
+import com.versatile.api.mapper.StatusMapper;
 import com.versatile.api.repository.JobRepository;
-import com.versatile.api.repository.StatusRepository;
 import com.versatile.api.ressource.JobRessource;
+import com.versatile.api.ressource.StatusRessource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +19,10 @@ public class JobService {
     JobRepository repository;
 
     @Autowired
-    CarRepository carRepository;
-
-    @Autowired
     JobMapper mapper;
 
     @Autowired
-    CarMapper carMapper;
-
-    @Autowired
-    StatusRepository statusRepository;
+    StatusMapper statusMapper;
 
     public List<JobRessource> getJobs() {
         return mapper.entitiesToModels(repository.findAll());
@@ -42,13 +33,8 @@ public class JobService {
                 .orElseThrow(() -> new JobNotFoundException(id)));
     }
 
-    public Status getStatus(String status) {
-        return statusRepository.findByStatus(status);
-    }
-
-    public List<JobRessource> getByStatus(String statusStr) {
-        Status status = getStatus(statusStr);
-        return mapper.entitiesToModels(repository.findByStatus(status));
+    public List<JobRessource> getByStatus(StatusRessource status) {
+        return mapper.entitiesToModels(repository.findByStatus(statusMapper.modelToEntity(status)));
     }
 
     public JobRessource save(JobRessource job) throws JobAlreadyExistException {
