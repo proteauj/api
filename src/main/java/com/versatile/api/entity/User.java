@@ -11,30 +11,22 @@ public class User {
     private String email;
     private String name;
 
-    /*
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_role")
-    private Role role;
-     */
-    @Column(name = "fk_role")
-    private int idRole;
+    private UserRole role;
 
-    /*
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "fk_userType")
+    @JoinColumn(name = "fk_user_type")
     private UserType userType;
-     */
-    @Column(name = "fk_userType")
-    private int idUserType;
 
     public User() {}
 
-    public User(Integer id, String email, String name, int idRole, int idUserType) {
+    public User(Integer id, String email, String name, UserRole role, UserType userType) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.idRole = idRole;
-        this.idUserType = idUserType;
+        this.role = role;
+        this.userType = userType;
     }
 
     public Integer getId() {
@@ -61,20 +53,20 @@ public class User {
         this.name = name;
     }
 
-    public int getIdRole() {
-        return idRole;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
-    public int getIdUserType() {
-        return idUserType;
+    public UserType getUserType() {
+        return userType;
     }
 
-    public void setIdUserType(int idUserType) {
-        this.idUserType = idUserType;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     @Override
@@ -83,8 +75,8 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", idRole=" + idRole +
-                ", idUserType=" + idUserType +
+                ", role=" + role.toString() +
+                ", userType=" + userType.toString() +
                 '}';
     }
 }

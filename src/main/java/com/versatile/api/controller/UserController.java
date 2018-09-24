@@ -4,10 +4,7 @@ import com.versatile.api.exception.LogInNotFoundException;
 import com.versatile.api.exception.MakeNotFoundException;
 import com.versatile.api.exception.UserAlreadyExistException;
 import com.versatile.api.exception.UserNotFoundException;
-import com.versatile.api.ressource.LogInRessource;
-import com.versatile.api.ressource.MakeRessource;
-import com.versatile.api.ressource.ModelRessource;
-import com.versatile.api.ressource.UserRessource;
+import com.versatile.api.ressource.*;
 import com.versatile.api.service.LogInService;
 import com.versatile.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +40,27 @@ public class UserController {
     LogInRessource getLogInByUser(@PathVariable int id) throws UserNotFoundException {
         UserRessource user = userService.getById(id);
         return logInService.getLogInByUser(user);
+    }
+
+    @GetMapping("/users/types")
+    List<UserTypeRessource> getTypesByDescription(@RequestParam(value="description", required=false) String description) {
+      if (description == null) {
+          return userService.getUserTypes();
+      }
+      return Arrays.asList(userService.getUserTypeByDescription(description));
+    }
+
+    @GetMapping("/users/roles")
+    List<UserRoleRessource> getRolesByUserType(@RequestParam(value="description", required=false) String description) {
+        if (description == null) {
+            return userService.getUserRoles();
+        }
+        return Arrays.asList(userService.getUserRoleByDescription(description));
+    }
+
+    @GetMapping("/users/roles/{id}")
+    List<UserRessource> getUsersByRole(@PathVariable int id) {
+        return userService.getUsersByRole(id);
     }
 
     @PostMapping("/users")
