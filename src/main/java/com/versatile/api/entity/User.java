@@ -3,6 +3,11 @@ package com.versatile.api.entity;
 import javax.persistence.*;
 
 @Entity
+/*
+@SecondaryTables(value = {
+        @SecondaryTable(name = "user_type", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_type", foreignKey = @ForeignKey(name = "id_type"))),
+        @SecondaryTable(name = "user_role", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_role", foreignKey = @ForeignKey(name = "id_role")))
+})*/
 public class User {
 
     @Id
@@ -16,17 +21,17 @@ public class User {
     private UserRole role;
 
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "fk_user_type")
-    private UserType userType;
+    @JoinColumn(name = "fk_type")
+    private UserType type;
 
     public User() {}
 
-    public User(Integer id, String email, String name, UserRole role, UserType userType) {
+    public User(Integer id, String email, String name, UserRole role, UserType type) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.role = role;
-        this.userType = userType;
+        this.type = type;
     }
 
     public Integer getId() {
@@ -61,12 +66,12 @@ public class User {
         this.role = role;
     }
 
-    public UserType getUserType() {
-        return userType;
+    public UserType getType() {
+        return type;
     }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    public void setType(UserType type) {
+        this.type = type;
     }
 
     @Override
@@ -76,7 +81,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", role=" + role.toString() +
-                ", userType=" + userType.toString() +
+                ", type=" + type.toString() +
                 '}';
     }
 }

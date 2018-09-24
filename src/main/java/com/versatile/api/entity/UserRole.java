@@ -7,22 +7,23 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer idRole;
     private String description;
 
-    public UserRole() {}
+    public UserRole() {
+    }
 
-    public UserRole(Integer id, String description) {
-        this.id = id;
+    public UserRole(Integer idRole, String description) {
+        this.idRole = idRole;
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdRole() {
+        return idRole;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
     }
 
     public String getDescription() {
@@ -36,7 +37,7 @@ public class UserRole {
     @Override
     public String toString() {
         return "UserRole{" +
-                "id=" + id +
+                "idRole=" + idRole +
                 ", description='" + description + '\'' +
                 '}';
     }

@@ -1,23 +1,23 @@
 package com.versatile.api.ressource;
 
 public class UserRoleRessource {
-    int id;
+    int idRole;
     String description;
 
     public UserRoleRessource() {
     }
 
-    public UserRoleRessource(int id, String description) {
-        this.id = id;
+    public UserRoleRessource(int idRole, String description) {
+        this.idRole = idRole;
         this.description = description;
     }
 
-    public int getId() {
-        return id;
+    public int getIdRole() {
+        return idRole;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
     }
 
     public String getDescription() {

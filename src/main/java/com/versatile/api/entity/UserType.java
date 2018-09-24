@@ -7,22 +7,23 @@ public class UserType {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer idType;
     private String description;
 
-    public UserType() {}
+    public UserType() {
+    }
 
-    public UserType(Integer id, String description) {
-        this.id = id;
+    public UserType(Integer idType, String description) {
+        this.idType = idType;
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdType() {
+        return idType;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdType(Integer idType) {
+        this.idType = idType;
     }
 
     public String getDescription() {
@@ -36,7 +37,7 @@ public class UserType {
     @Override
     public String toString() {
         return "UserType{" +
-                "id=" + id +
+                "idType=" + idType +
                 ", description='" + description + '\'' +
                 '}';
     }

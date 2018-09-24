@@ -72,7 +72,7 @@ public class UserService {
                     oldUser.setEmail(newUser.getEmail());
                     oldUser.setName(newUser.getName());
                     oldUser.setRole(newUser.getRole());
-                    oldUser.setUserType(newUser.getUserType());
+                    oldUser.setType(newUser.getType());
                     return mapper.entityToModel(repository.save(oldUser));
                 })
                 .orElseGet(() -> {

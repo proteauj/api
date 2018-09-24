@@ -1,23 +1,23 @@
 package com.versatile.api.ressource;
 
 public class UserTypeRessource {
-    int id;
+    int idType;
     String description;
 
     public UserTypeRessource() {
     }
 
-    public UserTypeRessource(int id, String description) {
-        this.id = id;
+    public UserTypeRessource(int idType, String description) {
+        this.idType = idType;
         this.description = description;
     }
 
-    public int getId() {
-        return id;
+    public int getIdType() {
+        return idType;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdType(int idType) {
+        this.idType = idType;
     }
 
     public String getDescription() {
