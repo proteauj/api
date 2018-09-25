@@ -30,7 +30,7 @@ public class JobTaskService {
     @Autowired
     UserMapper userMapper;
 
-    public List<JobTaskRessource> getJobTask() {
+    public List<JobTaskRessource> getJobTasks() {
         return mapper.entitiesToModels(repository.findAll());
     }
 

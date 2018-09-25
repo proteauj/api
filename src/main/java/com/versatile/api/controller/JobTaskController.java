@@ -29,7 +29,7 @@ public class JobTaskController {
     @GetMapping("/jobs/tasks")
     public List<JobTaskRessource> getJobTasks(@RequestParam(value="status", required=false) String statusStr) {
         if (statusStr == null) {
-            return jobTaskService.getJobTask();
+            return jobTaskService.getJobTasks();
         } else {
             StatusRessource status = statusService.getStatus(statusStr);
             return jobTaskService.getByStatus(status);
