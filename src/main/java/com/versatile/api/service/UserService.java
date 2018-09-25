@@ -4,6 +4,7 @@ import com.versatile.api.entity.User;
 import com.versatile.api.entity.UserRole;
 import com.versatile.api.exception.UserAlreadyExistException;
 import com.versatile.api.exception.UserNotFoundException;
+import com.versatile.api.exception.UserRoleNotFoundException;
 import com.versatile.api.mapper.UserMapper;
 import com.versatile.api.mapper.UserRoleMapper;
 import com.versatile.api.mapper.UserTypeMapper;
@@ -110,5 +111,10 @@ public class UserService {
         }
 
         return users;
+    }
+
+    public UserRoleRessource getRoleById(int id) throws UserRoleNotFoundException {
+        return userRoleMapper.entityToModel(userRoleRepository.findById(id)
+                .orElseThrow(() -> new UserRoleNotFoundException(id)));
     }
 }

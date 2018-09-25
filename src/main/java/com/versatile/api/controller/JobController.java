@@ -3,8 +3,10 @@ package com.versatile.api.controller;
 import com.versatile.api.exception.JobAlreadyExistException;
 import com.versatile.api.exception.JobNotFoundException;
 import com.versatile.api.ressource.JobRessource;
+import com.versatile.api.ressource.JobTaskRessource;
 import com.versatile.api.ressource.StatusRessource;
 import com.versatile.api.service.JobService;
+import com.versatile.api.service.JobTaskService;
 import com.versatile.api.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ public class JobController {
     JobService jobService;
 
     @Autowired
+    JobTaskService jobTaskService;
+
+    @Autowired
     StatusService statusService;
 
     @GetMapping("/jobs")
@@ -29,6 +34,8 @@ public class JobController {
             return jobService.getByStatus(status);
         }
     }
+
+
 
     @GetMapping("/jobs/{id}")
     JobRessource getById(@PathVariable int id) throws JobNotFoundException {
