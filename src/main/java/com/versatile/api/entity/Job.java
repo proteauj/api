@@ -7,7 +7,7 @@ public class Job {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idJob;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_car")
@@ -22,19 +22,19 @@ public class Job {
     public Job() {
     }
 
-    public Job(Integer id, Car car, Status status, String description) {
-        this.id = id;
+    public Job(Integer idJob, Car car, Status status, String description) {
+        this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdJob() {
+        return idJob;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdJob(Integer idJob) {
+        this.idJob = idJob;
     }
 
     public Car getCar() {
@@ -64,7 +64,7 @@ public class Job {
     @Override
     public String toString() {
         return "Job{" +
-                "id=" + id +
+                "idJob=" + idJob +
                 ", car=" + car.toString() +
                 ", status=" + status.toString() +
                 ", description='" + description + '\'' +

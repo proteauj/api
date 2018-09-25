@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer idUser;
     private String email;
     private String name;
 
@@ -26,20 +26,20 @@ public class User {
 
     public User() {}
 
-    public User(Integer id, String email, String name, UserRole role, UserType type) {
-        this.id = id;
+    public User(Integer idUser, String email, String name, UserRole role, UserType type) {
+        this.idUser = idUser;
         this.email = email;
         this.name = name;
         this.role = role;
         this.type = type;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public String getEmail() {
@@ -77,7 +77,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "idUser=" + idUser +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", role=" + role.toString() +

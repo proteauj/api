@@ -17,7 +17,6 @@ import com.versatile.api.ressource.UserTypeRessource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +57,7 @@ public class UserService {
     public UserRessource save(UserRessource user) throws UserAlreadyExistException {
         User userWithSameEmail = repository.findByEmail(user.getEmail());
         if (userWithSameEmail != null) {
-            throw new UserAlreadyExistException(userWithSameEmail.getEmail(), userWithSameEmail.getId());
+            throw new UserAlreadyExistException(userWithSameEmail.getEmail(), userWithSameEmail.getIdUser());
         }
 
         User userEntity = mapper.modelToEntity(user);
@@ -77,7 +76,7 @@ public class UserService {
                     return mapper.entityToModel(repository.save(oldUser));
                 })
                 .orElseGet(() -> {
-                    newUser.setId(id);
+                    newUser.setIdUser(id);
                     return mapper.entityToModel(repository.save(newUser));
                 });
     }

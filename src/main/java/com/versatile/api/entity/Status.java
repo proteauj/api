@@ -7,24 +7,24 @@ public class Status {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idStatus;
 
     private String status;
 
     public Status() {
     }
 
-    public Status(Integer id, String status) {
-        this.id = id;
+    public Status(Integer idStatus, String status) {
+        this.idStatus = idStatus;
         this.status = status;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdStatus() {
+        return idStatus;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdStatus(Integer idStatus) {
+        this.idStatus = idStatus;
     }
 
     public String getStatus() {
@@ -38,7 +38,7 @@ public class Status {
     @Override
     public String toString() {
         return "Status{" +
-                "id=" + id +
+                "idStatus=" + idStatus +
                 ", status='" + status + '\'' +
                 '}';
     }

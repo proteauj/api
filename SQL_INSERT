@@ -23,7 +23,7 @@ INSERT INTO Status (status) VALUES ("FINISHED");
 -- Dumping data for table `make`
 --
 
-INSERT INTO `make` (`id`, `code`, `title`) VALUES
+INSERT INTO `make` (`idUser`, `code`, `title`) VALUES
 (1, 'ACURA', 'Acura'),
 (2, 'ALFA', 'Alfa Romeo'),
 (3, 'AMC', 'AMC'),
@@ -101,7 +101,7 @@ INSERT INTO `make` (`id`, `code`, `title`) VALUES
 -- Dumping data for table `model`
 --
 
-INSERT INTO `model` (`id`, `fk_make`, `code`, `title`) VALUES
+INSERT INTO `model` (`idUser`, `fk_make`, `code`, `title`) VALUES
 (1, 1, 'CL_MODELS', 'CL Models (4)'),
 (2, 1, '2.2CL', ' - 2.2CL'),
 (3, 1, '2.3CL', ' - 2.3CL'),

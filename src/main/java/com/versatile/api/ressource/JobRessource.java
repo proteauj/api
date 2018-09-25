@@ -1,7 +1,7 @@
 package com.versatile.api.ressource;
 
 public class JobRessource {
-    private Integer id;
+    private Integer idJob;
     private CarRessource car;
     private StatusRessource status;
     private String description;
@@ -9,19 +9,19 @@ public class JobRessource {
     public JobRessource() {
     }
 
-    public JobRessource(Integer id, CarRessource car, StatusRessource status, String description) {
-        this.id = id;
+    public JobRessource(Integer idJob, CarRessource car, StatusRessource status, String description) {
+        this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdJob() {
+        return idJob;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdJob(Integer idJob) {
+        this.idJob = idJob;
     }
 
     public CarRessource getCar() {

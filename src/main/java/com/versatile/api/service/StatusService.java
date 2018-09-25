@@ -35,7 +35,7 @@ public class StatusService {
     public StatusRessource save(StatusRessource status) throws StatusAlreadyExistException {
         Status statusWithSameTitle = repository.findByStatus(status.getStatus());
         if (statusWithSameTitle != null) {
-            throw new StatusAlreadyExistException(statusWithSameTitle.getStatus(), statusWithSameTitle.getId());
+            throw new StatusAlreadyExistException(statusWithSameTitle.getStatus(), statusWithSameTitle.getIdStatus());
         }
 
         Status statusEntity = mapper.modelToEntity(status);
@@ -51,7 +51,7 @@ public class StatusService {
                     return mapper.entityToModel(repository.save(oldStatus));
                 })
                 .orElseGet(() -> {
-                    newStatus.setId(id);
+                    newStatus.setIdStatus(id);
                     return mapper.entityToModel(repository.save(newStatus));
                 });
     }

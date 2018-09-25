@@ -1,23 +1,23 @@
 package com.versatile.api.ressource;
 
 public class StatusRessource {
-    private Integer id;
+    private Integer idStatus;
     private String status;
 
     public StatusRessource() {
     }
 
-    public StatusRessource(Integer id, String status) {
-        this.id = id;
+    public StatusRessource(Integer idStatus, String status) {
+        this.idStatus = idStatus;
         this.status = status;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdStatus() {
+        return idStatus;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdStatus(Integer idStatus) {
+        this.idStatus = idStatus;
     }
 
     public String getStatus() {
