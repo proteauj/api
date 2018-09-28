@@ -17,7 +17,7 @@ public class JobTask {
     @JoinColumn(name = "fk_job")
     private Job job;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_status")
     private Status status;
 
