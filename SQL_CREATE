@@ -1,68 +1,78 @@
 CREATE DATABASE versatile;
 
 CREATE TABLE Role (
-    idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     description varchar(255)
 );
 
 CREATE TABLE UserType (
-    idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     description varchar(255)
 );
 
 CREATE TABLE User (
-    idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email varchar(255) NOT NULL,
     name varchar(255),
     fk_role int NOT NULL,
     fk_user_type int NOT NULL,
-    FOREIGN KEY (fk_role) REFERENCES Role(idUser),
-    FOREIGN KEY (fk_user_type) REFERENCES UserType(idUser)
+    FOREIGN KEY (fk_role) REFERENCES Role(id),
+    FOREIGN KEY (fk_user_type) REFERENCES UserType(id)
 );
 
 CREATE TABLE LogIn (
-	idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	password varchar(255) NOT NULL,
 	nb_failed_login int default 0,
 	fk_user int NOT NULL,
-    FOREIGN KEY (fk_user) REFERENCES User(idUser)
+    FOREIGN KEY (fk_user) REFERENCES User(id)
 );
 
 CREATE TABLE Car (
-	idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	fk_model int NOT NULL,
 	year int NOT NULL,
 	vin varchar(255)
-    FOREIGN KEY (fk_model) REFERENCES Model(idUser)
+    FOREIGN KEY (fk_model) REFERENCES Model(id)
 );
 
 CREATE TABLE Job (
-	idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description varchar(255),
+	date_start date DEFAULT NULL,
+	date_finish date DEFAULT NULL,
 	fk_car int NOT NULL,
 	fk_status int NOT NULL,
-	FOREIGN KEY (fk_car) REFERENCES Car(idUser),
-	FOREIGN KEY (fk_status) REFERENCES Status(idUser)
+	FOREIGN KEY (fk_car) REFERENCES Car(id),
+	FOREIGN KEY (fk_status) REFERENCES Status(id)
 );
 
 CREATE TABLE JobTask (
-	idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name varchar(255) NOT NULL,
 	time int,
 	fk_job int NOT NULL,
 	fk_status int NOT NULL,
-	FOREIGN KEY (fk_job) REFERENCES Job(idUser),
-	FOREIGN KEY (fk_status) REFERENCES Status(idUser)
+	FOREIGN KEY (fk_job) REFERENCES Job(id),
+	FOREIGN KEY (fk_status) REFERENCES Status(id)
+);
+
+CREATE TABLE file (
+  id_file int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  file blob NOT NULL,
+  name varchar(255) NOT NULL,
+  fk_job int(11) NOT NULL,
+  FOREIGN KEY (fk_job) REFERENCES Job(id_job)
 );
 
 CREATE TABLE Part (
-	idUser int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description varchar(255) NOT NULL,
 	price decimal(8,2) NOT NULL,
 	is_ordered boolean default false,
 	is_received boolean default false,
 	fk_job_task int NOT NULL,
-	FOREIGN KEY (fk_job_task) REFERENCES JobTask(idUser)
+	FOREIGN KEY (fk_job_task) REFERENCES JobTask(id)
 );
 
 --
@@ -70,10 +80,10 @@ CREATE TABLE Part (
 --
 
 CREATE TABLE IF NOT EXISTS Make (
-  idUser int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   code varchar(255) NOT NULL DEFAULT '',
   title varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (idUser)
+  PRIMARY KEY (id)
 );
 
 
@@ -82,16 +92,16 @@ CREATE TABLE IF NOT EXISTS Make (
 --
 
 CREATE TABLE IF NOT EXISTS Model (
-  idUser int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   fk_make int NOT NULL DEFAULT '0',
   code varchar(255) NOT NULL DEFAULT '',
   title varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (idUser),
-  FOREIGN KEY (fk_make) REFERENCES Make(idUser)
+  PRIMARY KEY (id),
+  FOREIGN KEY (fk_make) REFERENCES Make(id)
 );
 
 CREATE TABLE IF NOT EXISTS Status (
-  idUser int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   status varchar(255) NOT NULL UNIQUE DEFAULT ‘’,
-  PRIMARY KEY (idUser)
+  PRIMARY KEY (id)
 );

@@ -71,6 +71,7 @@ public class JobTaskController {
 
     @DeleteMapping("/jobs/tasks/{id}")
     void deleteJobTask(@PathVariable int id) {
+
         jobTaskService.deleteById(id);
     }
 }
