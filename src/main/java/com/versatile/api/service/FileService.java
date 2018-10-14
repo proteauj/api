@@ -10,7 +10,11 @@ import com.versatile.api.ressource.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Part;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +33,12 @@ public class FileService {
         return mapper.entitiesToModels(repository.findAll());
     }
 
-    public FileRessource getById(int id) throws FileJobNotFoundException {
-        return mapper.entityToModel(repository.findById(id)
-                .orElseThrow(() -> new FileJobNotFoundException(id)));
+    public byte[] getById(int id) throws FileJobNotFoundException {
+        File file = repository.findById(id)
+                .orElseThrow(() -> new FileJobNotFoundException(id));
+        return file.getFile();
+//        return mapper.entityToModel(repository.findById(id)
+//                .orElseThrow(() -> new FileJobNotFoundException(id)));
     }
 
     public List<FileRessource> getByJob(JobRessource job) {
@@ -67,5 +74,22 @@ public class FileService {
 
     public void deleteById(int id) {
         repository.deleteById(id);
+    }
+
+    public byte[] getBytesFromPart(Part part) throws IOException {
+        InputStream partInputStream=part.getInputStream();
+        ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
+        byte[] chunk=new byte[4096];
+        int amountRead;
+
+        while ((amountRead=partInputStream.read(chunk)) != -1) {
+            outputStream.write(chunk,0,amountRead);
+        }
+
+        if (outputStream.size() == 0) {
+            return null;
+        } else {
+            return outputStream.toByteArray();
+        }
     }
 }

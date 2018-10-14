@@ -46,7 +46,7 @@ public class FileController {
     }
 
     @GetMapping("/jobs/files/{id}")
-    FileRessource getById(@PathVariable int id) throws FileJobNotFoundException {
+    byte[] getById(@PathVariable int id) throws FileJobNotFoundException {
         return fileService.getById(id);
     }
 
@@ -58,8 +58,7 @@ public class FileController {
         Part file = request.getPart("file");
         String message = "";
 
-        byte[] bytes = new byte[0];
-        file.getInputStream().read(bytes);
+        byte[] bytes = fileService.getBytesFromPart(file);
 
         filesToSave.add(new File(0, file.getContentType(), file.getSubmittedFileName(), bytes, jobMapper.modelToEntity(job)));
         return fileService.save(filesToSave);

@@ -8,7 +8,6 @@ import java.io.File;
 
 public class FileRessource {
     private Integer idFile;
-
     private byte[] file;
     private String name;
     private String type;
