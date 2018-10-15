@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -55,12 +56,12 @@ public class FileController {
             throws JobNotFoundException, IOException, ServletException {
         List<File> filesToSave = new ArrayList<>();
         JobRessource job = jobService.getById(id);
-        Part file = request.getPart("file");
-        String message = "";
+        Collection<Part> files = request.getParts();//getPart("file");
 
-        byte[] bytes = fileService.getBytesFromPart(file);
-
-        filesToSave.add(new File(0, file.getContentType(), file.getSubmittedFileName(), bytes, jobMapper.modelToEntity(job)));
+        for (Part file: files) {
+            byte[] bytes = fileService.getBytesFromPart(file);
+            filesToSave.add(new File(0, file.getContentType(), file.getSubmittedFileName(), bytes, jobMapper.modelToEntity(job)));
+        }
         return fileService.save(filesToSave);
     }
 
