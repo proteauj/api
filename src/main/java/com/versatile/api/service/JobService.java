@@ -38,16 +38,6 @@ public class JobService {
     }
 
     public JobRessource save(JobRessource job) throws JobAlreadyExistException {
-        /*Job jobWithSameCar = repository.findByCar(carMapper.modelToEntity(job.getCar()));
-        if (jobWithSameCar != null && jobWithSameCar.getStatus().equals(getStatus("NEW"))) {
-            throw new JobAlreadyExistException(jobWithSameCar.getCar().getIdUser(), jobWithSameCar.getIdUser());
-        }*/
-
-        /*if (job.getCar().getIdUser() == null) {
-            Car newCar = carRepository.save(carMapper.modelToEntity(job.getCar()));
-            job.setCar(carMapper.entityToModel(newCar));
-        }*/
-
         Job jobEntity = mapper.modelToEntity(job);
         return mapper.entityToModel(repository.save(jobEntity));
     }

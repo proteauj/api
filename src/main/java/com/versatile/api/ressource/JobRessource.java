@@ -7,20 +7,20 @@ public class JobRessource {
     private CarRessource car;
     private StatusRessource status;
     private String description;
-    private Date dateStart;
-    private Date dateFinish;
+    private Date arrivalDate;
+    private Date toDeliverDate;
 
     public JobRessource() {
     }
 
-    public JobRessource(Integer idJob, CarRessource car, StatusRessource status, String description,
-                        Date dateStart, Date dateFinish) {
+    public JobRessource(Integer idJob, CarRessource car, StatusRessource status, String description, Date arrivalDate,
+                        Date toDeliverDate) {
         this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
-        this.dateStart = dateStart;
-        this.dateFinish = dateFinish;
+        this.arrivalDate = arrivalDate;
+        this.toDeliverDate = toDeliverDate;
     }
 
     public Integer getIdJob() {
@@ -55,19 +55,19 @@ public class JobRessource {
         this.description = description;
     }
 
-    public Date getDateStart() {
-        return dateStart;
+    public Date getArrivalDate() {
+        return arrivalDate;
     }
 
-    public void setDateStart(Date dateStart) {
-        this.dateStart = dateStart;
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
     }
 
-    public Date getDateFinish() {
-        return dateFinish;
+    public Date getToDeliverDate() {
+        return toDeliverDate;
     }
 
-    public void setDateFinish(Date dateFinish) {
-        this.dateFinish = dateFinish;
+    public void setToDeliverDate(Date toDeliverDate) {
+        this.toDeliverDate = toDeliverDate;
     }
 }

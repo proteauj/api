@@ -19,19 +19,19 @@ public class Job {
     private Status status;
 
     private String description;
-    private Date dateStart;
-    private Date dateFinish;
+    private Date arrivalDate;
+    private Date toDeliverDate;
 
     public Job() {
     }
 
-    public Job(Integer idJob, Car car, Status status, String description, Date dateStart, Date dateFinish) {
+    public Job(Integer idJob, Car car, Status status, String description, Date arrivalDate, Date toDeliverDate) {
         this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
-        this.dateStart = dateStart;
-        this.dateFinish = dateFinish;
+        this.arrivalDate = arrivalDate;
+        this.toDeliverDate = toDeliverDate;
     }
 
     public Integer getIdJob() {
@@ -66,20 +66,20 @@ public class Job {
         this.description = description;
     }
 
-    public Date getDateStart() {
-        return dateStart;
+    public Date getArrivalDate() {
+        return arrivalDate;
     }
 
-    public void setDateStart(Date dateStart) {
-        this.dateStart = dateStart;
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
     }
 
-    public Date getDateFinish() {
-        return dateFinish;
+    public Date getToDeliverDate() {
+        return toDeliverDate;
     }
 
-    public void setDateFinish(Date dateFinish) {
-        this.dateFinish = dateFinish;
+    public void setToDeliverDate(Date toDeliverDate) {
+        this.toDeliverDate = toDeliverDate;
     }
 
     @Override
@@ -89,8 +89,8 @@ public class Job {
                 ", car=" + car +
                 ", status=" + status +
                 ", description='" + description + '\'' +
-                ", dateStart=" + dateStart +
-                ", dateFinish=" + dateFinish +
+                ", arrivalDate=" + arrivalDate +
+                ", toDeliverDate=" + toDeliverDate +
                 '}';
     }
 }
