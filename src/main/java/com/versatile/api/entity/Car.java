@@ -15,14 +15,16 @@ public class Car {
 
     private Integer year;
     private String vin;
+    private String imageUrl;
 
     public Car() {}
 
-    public Car(Integer id, Model model, Integer year, String vin) {
+    public Car(Integer id, Model model, Integer year, String vin, String imageUrl) {
         this.id = id;
         this.model = model;
         this.year = year;
         this.vin = vin;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getId() {
@@ -57,6 +59,14 @@ public class Car {
         this.vin = vin;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -64,6 +74,7 @@ public class Car {
                 ", model=" + model +
                 ", year=" + year +
                 ", vin='" + vin + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

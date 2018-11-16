@@ -50,6 +50,8 @@ public class JobService {
                     oldJob.setDescription(newJob.getDescription());
                     oldJob.setCar(newJob.getCar());
                     oldJob.setStatus(newJob.getStatus());
+                    oldJob.setArrivalDate(newJob.getArrivalDate());
+                    oldJob.setToDeliverDate(newJob.getToDeliverDate());
                     return mapper.entityToModel(repository.save(oldJob));
                 })
                 .orElseGet(() -> {

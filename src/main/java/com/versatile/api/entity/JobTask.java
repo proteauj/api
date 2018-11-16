@@ -10,7 +10,7 @@ public class JobTask {
     private Integer id;
 
     private String name;
-    private Integer time;
+    private Integer estimatedTime;
     private Integer priority;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -21,27 +21,39 @@ public class JobTask {
     @JoinColumn(name = "fk_status")
     private Status status;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_role")
     private UserRole role;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_user")
     private User user;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_task")
+    private Task task;
+
+    private Integer elapsedTime;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_car_area")
+    private CarArea carArea;
 
     public JobTask() {
     }
 
-    public JobTask(Integer id, String name, Integer time, Integer priority, Job job, Status status,
-                   UserRole role, User user) {
+    public JobTask(Integer id, String name, Integer estimatedTime, Integer priority, Job job, Status status, UserRole role, User user, Task task, Integer elapsedTime, CarArea carArea) {
         this.id = id;
         this.name = name;
-        this.time = time;
+        this.estimatedTime = estimatedTime;
         this.priority = priority;
         this.job = job;
         this.status = status;
         this.role = role;
         this.user = user;
+        this.task = task;
+        this.elapsedTime = elapsedTime;
+        this.carArea = carArea;
     }
 
     public Integer getId() {
@@ -60,12 +72,12 @@ public class JobTask {
         this.name = name;
     }
 
-    public Integer getTime() {
-        return time;
+    public Integer getEstimatedTime() {
+        return estimatedTime;
     }
 
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setEstimatedTime(Integer estimatedTime) {
+        this.estimatedTime = estimatedTime;
     }
 
     public Integer getPriority() {
@@ -108,17 +120,27 @@ public class JobTask {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "JobTask{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", time=" + time +
-                ", priority=" + priority +
-                ", job=" + job.toString() +
-                ", status=" + status.toString() +
-                ", role=" + role.toString() +
-                ", user=" + user.toString() +
-                '}';
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public Integer getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(Integer elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
+    public CarArea getCarArea() {
+        return carArea;
+    }
+
+    public void setCarArea(CarArea carArea) {
+        this.carArea = carArea;
     }
 }

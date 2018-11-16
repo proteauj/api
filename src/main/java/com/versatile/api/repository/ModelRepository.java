@@ -5,6 +5,7 @@ import com.versatile.api.entity.Model;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ModelRepository extends CrudRepository<Model, Integer> {
 
@@ -15,4 +16,6 @@ public interface ModelRepository extends CrudRepository<Model, Integer> {
     Model save(Model model);
 
     Model findByTitle(String title);
+
+    Optional<Model> findByCode(String code);
 }

@@ -56,4 +56,9 @@ public class MakeService {
     public void deleteById(int id) {
         repository.deleteById(id);
     }
+
+    public MakeRessource getByCode(String valueId) throws MakeNotFoundException {
+        return mapper.entityToModel(repository.findByCode(valueId)
+                .orElseThrow(() -> new MakeNotFoundException(valueId)));
+    }
 }

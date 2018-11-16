@@ -14,7 +14,7 @@ public class Job {
     @JoinColumn(name = "fk_car")
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_status")
     private Status status;
 

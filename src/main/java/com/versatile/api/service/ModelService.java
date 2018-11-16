@@ -68,4 +68,9 @@ public class ModelService {
     public void deleteById(int id) {
         repository.deleteById(id);
     }
+
+    public ModelRessource getByCode(String valueId) throws ModelNotFoundException {
+        return mapper.entityToModel(repository.findByCode(valueId)
+                .orElseThrow(() -> new ModelNotFoundException(valueId)));
+    }
 }

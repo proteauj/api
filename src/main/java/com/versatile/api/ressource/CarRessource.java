@@ -5,15 +5,17 @@ public class CarRessource {
     private ModelRessource model;
     private Integer year;
     private String vin;
+    private String imageUrl;
 
     public CarRessource() {
     }
 
-    public CarRessource(Integer id, ModelRessource model, Integer year, String vin) {
+    public CarRessource(Integer id, ModelRessource model, Integer year, String vin, String imageUrl) {
         this.id = id;
         this.model = model;
         this.year = year;
         this.vin = vin;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getId() {
@@ -46,5 +48,13 @@ public class CarRessource {
 
     public void setVin(String vin) {
         this.vin = vin;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
