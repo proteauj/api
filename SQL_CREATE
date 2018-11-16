@@ -50,7 +50,7 @@ CREATE TABLE Job (
 CREATE TABLE JobTask (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name varchar(255) NOT NULL,
-	time int,
+	estimatedTime int,
 	fk_job int NOT NULL,
 	fk_status int NOT NULL,
 	FOREIGN KEY (fk_job) REFERENCES Job(id),

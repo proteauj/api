@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class JobTaskController {
@@ -37,9 +38,15 @@ public class JobTaskController {
     }
 
     @GetMapping("/jobs/{id}/tasks")
-    public List<JobTaskRessource> getJobTasksByJob(@PathVariable int id) throws JobNotFoundException {
+    public List<JobTaskRessource> getJobTasksByJob(@PathVariable int id, @RequestParam(value="carAreaOnly", required = false) String isCarAreaOnly) throws JobNotFoundException {
         JobRessource job = jobService.getById(id);
-        return jobTaskService.getByJob(job);
+        List<JobTaskRessource> jobTasks = jobTaskService.getByJob(job);
+
+        if (isCarAreaOnly != null && "true".equalsIgnoreCase(isCarAreaOnly)) {
+            jobTasks = jobTasks.stream().filter(x -> x.getCarArea() != null).collect(Collectors.toList());
+        }
+
+        return jobTasks;
     }
 
     @GetMapping("/jobs/tasks/{id}")

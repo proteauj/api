@@ -70,8 +70,11 @@ public class JobTaskService {
                     oldJobTask.setPriority(newJobTask.getPriority());
                     oldJobTask.setRole(newJobTask.getRole());
                     oldJobTask.setStatus(newJobTask.getStatus());
-                    oldJobTask.setTime(newJobTask.getTime());
+                    oldJobTask.setEstimatedTime(newJobTask.getEstimatedTime());
                     oldJobTask.setUser(newJobTask.getUser());
+                    oldJobTask.setCarArea(newJobTask.getCarArea());
+                    oldJobTask.setElapsedTime(newJobTask.getElapsedTime());
+                    oldJobTask.setTask(newJobTask.getTask());
                     return mapper.entityToModel(repository.save(oldJobTask));
                 })
                 .orElseGet(() -> {

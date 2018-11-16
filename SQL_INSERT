@@ -10,7 +10,7 @@ INSERT INTO Car (make, model, year, vin) VALUES ('Mazda', 'CX-9', 2018, 'JM3TCAD
 
 INSERT INTO Job (description, fk_car, fk_status) VALUES ('Arranger la carrosserie', 1);
 
-INSERT INTO JobTask (name, time, fk_job, fk_status) VALUES ('Peinturer le hood', 120, 1);
+INSERT INTO JobTask (name, estimatedTime, fk_job, fk_status) VALUES ('Peinturer le hood', 120, 1);
 
 INSERT INTO Part (description, price, isOrdered, isReceived, fk_jobTask) VALUES ('Peinture Couleur xyz', 50.05, true, true, 1);
 

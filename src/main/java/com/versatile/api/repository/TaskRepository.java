@@ -11,5 +11,5 @@ public interface TaskRepository extends CrudRepository<Task, Integer> {
 
     Task save(Task task);
 
-    List<Task> findByName(String name);
+    Task findByName(String name);
 }
