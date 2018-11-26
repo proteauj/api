@@ -9,6 +9,7 @@ import com.versatile.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,8 +68,8 @@ public class JobTaskController {
     }
 
     @PostMapping("/jobs/tasks")
-    JobTaskRessource createJobTask(@RequestBody JobTaskRessource jobTask) {
-        return jobTaskService.save(jobTask);
+    List<JobTaskRessource> createJobTask(@RequestBody ArrayList<JobTaskRessource> jobTasks) {
+        return jobTaskService.save(jobTasks);
     }
 
     @PutMapping("/jobs/tasks/{id}")

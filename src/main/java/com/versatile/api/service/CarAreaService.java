@@ -26,8 +26,8 @@ public class CarAreaService {
                 .orElseThrow(() -> new CarAreaNotFoundException(id)));
     }
 
-    public CarAreaRessource getByCode(String code) throws CarAreaNotFoundException {
-        return mapper.entityToModel(repository.getByCode(code)
+    public CarAreaRessource findByCode(String code) throws CarAreaNotFoundException {
+        return mapper.entityToModel(repository.findByCode(code)
                 .orElseThrow(() -> new CarAreaNotFoundException(code)));
     }
 }

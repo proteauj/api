@@ -8,6 +8,7 @@ import com.versatile.api.ressource.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -55,9 +56,16 @@ public class JobTaskService {
         return mapper.entitiesToModels(repository.findByRole(userRoleMapper.modelToEntity(role)));
     }
 
-    public JobTaskRessource save(JobTaskRessource jobTask) {
-        JobTask jobTaskEntity = mapper.modelToEntity(jobTask);
-        return mapper.entityToModel(repository.save(jobTaskEntity));
+    public List<JobTaskRessource> save(ArrayList<JobTaskRessource> jobTasks) {
+        List<JobTaskRessource> savedJobs = new ArrayList<>();
+
+        for (JobTaskRessource jobTask : jobTasks) {
+            JobTask jobTaskEntity = mapper.modelToEntity(jobTask);
+            JobTaskRessource savedJob = mapper.entityToModel(repository.save(jobTaskEntity));
+            savedJobs.add(savedJob);
+        }
+
+        return savedJobs;
     }
 
     public JobTaskRessource updateJobTask(JobTaskRessource jobTask, int id) {

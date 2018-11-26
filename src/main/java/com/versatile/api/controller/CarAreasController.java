@@ -15,16 +15,16 @@ public class CarAreasController {
     CarAreaService carAreaService;
 
     @GetMapping("/car-areas")
-    public List<CarAreaRessource> getCarAreas(@PathVariable(name="code", required = false) String code) throws CarAreaNotFoundException {
+    public List<CarAreaRessource> getCarAreas(@RequestParam(name="code", required = false) String code) throws CarAreaNotFoundException {
         if (code != null) {
-            return Arrays.asList(carAreaService.getByCode(code));
+            return Arrays.asList(carAreaService.findByCode(code));
         } else {
             return carAreaService.getCarAreas();
         }
     }
 
-    @GetMapping("/cars-areas/{id}")
-    CarAreaRessource getById(@PathVariable int id) throws CarAreaNotFoundException {
+    @GetMapping("/car-areas/{id}")
+    public CarAreaRessource getById(@PathVariable int id) throws CarAreaNotFoundException {
         return carAreaService.getById(id);
     }
 }

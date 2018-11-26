@@ -11,7 +11,7 @@ public interface CarAreaRepository extends CrudRepository<CarArea, Integer> {
 
     List<CarArea> findAll();
 
-    Optional<CarArea> getByCode(String code);
+    Optional<CarArea> findByCode(String code);
 
     Optional<List<CarArea>> getByCarSide(CarSide carSide);
 }
