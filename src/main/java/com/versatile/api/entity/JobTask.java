@@ -27,7 +27,7 @@ public class JobTask {
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_user")
-    private User user;
+    private Employee user;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_task")
@@ -42,7 +42,7 @@ public class JobTask {
     public JobTask() {
     }
 
-    public JobTask(Integer id, String name, Integer estimatedTime, Integer priority, Job job, Status status, UserRole role, User user, Task task, Integer elapsedTime, CarArea carArea) {
+    public JobTask(Integer id, String name, Integer estimatedTime, Integer priority, Job job, Status status, UserRole role, Employee user, Task task, Integer elapsedTime, CarArea carArea) {
         this.id = id;
         this.name = name;
         this.estimatedTime = estimatedTime;
@@ -112,11 +112,11 @@ public class JobTask {
         this.role = role;
     }
 
-    public User getUser() {
+    public Employee getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Employee user) {
         this.user = user;
     }
 

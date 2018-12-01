@@ -1,7 +1,7 @@
 package com.versatile.api.service;
 
+import com.versatile.api.entity.Employee;
 import com.versatile.api.entity.LogIn;
-import com.versatile.api.entity.User;
 import com.versatile.api.exception.LogInNotFoundException;
 import com.versatile.api.mapper.LogInMapper;
 import com.versatile.api.mapper.UserMapper;
@@ -29,7 +29,7 @@ public class LogInService {
     }
 
     public LogInRessource getLogInByUser(UserRessource user) {
-        User userEntity = mapperUser.modelToEntity(user);
+        Employee userEntity = mapperUser.modelToEntity(user);
         return mapper.entityToModel(repository.findByUser(userEntity));
     }
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
         @SecondaryTable(name = "user_type", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_type", foreignKey = @ForeignKey(name = "id_type"))),
         @SecondaryTable(name = "user_role", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_role", foreignKey = @ForeignKey(name = "id_role")))
 })*/
-public class User {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -24,9 +24,9 @@ public class User {
     @JoinColumn(name = "fk_type")
     private UserType type;
 
-    public User() {}
+    public Employee() {}
 
-    public User(Integer idUser, String email, String name, UserRole role, UserType type) {
+    public Employee(Integer idUser, String email, String name, UserRole role, UserType type) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
@@ -76,7 +76,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Employee{" +
                 "idUser=" + idUser +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +

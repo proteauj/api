@@ -1,18 +1,18 @@
 package com.versatile.api.repository;
 
-import com.versatile.api.entity.User;
+import com.versatile.api.entity.Employee;
 import com.versatile.api.entity.UserRole;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<Employee, Integer> {
 
-    User findByEmail(String email);
+    Employee findByEmail(String email);
 
-    List<User> findAll();
+    List<Employee> findAll();
 
-    User save(User user);
+    Employee save(Employee user);
 
-    List<User> findByRole(UserRole role);
+    List<Employee> findByRole(UserRole role);
 }

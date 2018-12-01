@@ -15,11 +15,11 @@ public class LogIn {
 
     @OneToOne
     @JoinColumn(name = "fk_user")
-    private User user;
+    private Employee user;
 
     public LogIn() {}
 
-    public LogIn(Integer id, String password, Integer nbFailedLogin, User user) {
+    public LogIn(Integer id, String password, Integer nbFailedLogin, Employee user) {
         this.id = id;
         this.password = password;
         this.nbFailedLogin = nbFailedLogin;
@@ -50,11 +50,11 @@ public class LogIn {
         this.nbFailedLogin = nbFailedLogin;
     }
 
-    public User getUser() {
+    public Employee getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Employee user) {
         this.user = user;
     }
 

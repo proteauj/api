@@ -13,7 +13,7 @@ public interface JobTaskRepository extends CrudRepository<JobTask, Integer> {
 
     List<JobTask> findByStatus(Status status);
 
-    List<JobTask> findByUser(User user);
+    List<JobTask> findByUser(Employee user);
 
     List<JobTask> findByJob(Job job);
 

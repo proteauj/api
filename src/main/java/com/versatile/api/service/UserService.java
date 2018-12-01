@@ -1,6 +1,6 @@
 package com.versatile.api.service;
 
-import com.versatile.api.entity.User;
+import com.versatile.api.entity.Employee;
 import com.versatile.api.entity.UserRole;
 import com.versatile.api.exception.UserAlreadyExistException;
 import com.versatile.api.exception.UserNotFoundException;
@@ -55,17 +55,17 @@ public class UserService {
     }
 
     public UserRessource save(UserRessource user) throws UserAlreadyExistException {
-        User userWithSameEmail = repository.findByEmail(user.getEmail());
+        Employee userWithSameEmail = repository.findByEmail(user.getEmail());
         if (userWithSameEmail != null) {
             throw new UserAlreadyExistException(userWithSameEmail.getEmail(), userWithSameEmail.getIdUser());
         }
 
-        User userEntity = mapper.modelToEntity(user);
+        Employee userEntity = mapper.modelToEntity(user);
         return mapper.entityToModel(repository.save(userEntity));
     }
 
     public UserRessource updateUser(UserRessource user, int id) {
-        User newUser = mapper.modelToEntity(user);
+        Employee newUser = mapper.modelToEntity(user);
 
         return repository.findById(id)
                 .map(oldUser -> {

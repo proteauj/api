@@ -1,14 +1,14 @@
 package com.versatile.api.repository;
 
+import com.versatile.api.entity.Employee;
 import com.versatile.api.entity.LogIn;
-import com.versatile.api.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
 public interface LogInRepository extends CrudRepository<LogIn, Integer> {
 
-    LogIn findByUser(User user);
+    LogIn findByUser(Employee user);
 
     List<LogIn> findAll();
 
