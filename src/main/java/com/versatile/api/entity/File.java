@@ -10,7 +10,7 @@ public class File {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer idFile;
 
-    @Lob
+    //@Lob
     private byte[] file;
 
     private String name;
