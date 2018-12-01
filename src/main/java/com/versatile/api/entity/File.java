@@ -10,15 +10,16 @@ public class File {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer idFile;
 
-    private String type;
-    private String name;
-
     @Lob
     private byte[] file;
+
+    private String name;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_job")
     private Job job;
+
+    private String type;
 
     public File() {
     }
