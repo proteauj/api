@@ -53,26 +53,6 @@ public class VehicleService {
             car = mapper.entityToModel(repository.getByVin(vin)
                     .orElseThrow(() -> new CarNotFoundException(vin)));
         } catch (CarNotFoundException e) {
-
-
-            //       // String url = "http://api.marketcheck.com/v1/vin/{vin}/specs";
-//        String apiKey = "HbGqDWr0neAcdWICnHuhAmJvAAExomA1";
-//        UriComponents builder = UriComponentsBuilder.newInstance()
-//                .scheme("http")
-//                .host("api.marketcheck.com/v1")
-//                .path("vin/{vin}/specs")
-//                .query("api_key={key}").buildAndExpand(vin, apiKey);
-//
-//        String uri = builder.toUriString();
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Host", "marketcheck-prod.apigee.net");
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity entity = new HttpEntity(headers);
-//        ResponseEntity<VinDecodedRessource> respEntity =
-//                restTemplate.exchange(uri, HttpMethod.GET, entity, VinDecodedRessource.class);
-
             UriComponents builder = UriComponentsBuilder.newInstance()
                     .scheme("https")
                     .host("vpic.nhtsa.dot.gov")

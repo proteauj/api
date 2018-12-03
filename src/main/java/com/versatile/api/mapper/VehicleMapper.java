@@ -33,7 +33,7 @@ public class VehicleMapper {
         try {
             make = makeService.getByCode(makeResult.getValueId());
         } catch (MakeNotFoundException e) {
-            make = new MakeRessource(-1, makeResult.getValueId(), makeResult.getValue());
+            make = new MakeRessource(null, makeResult.getValueId(), makeResult.getValue());
         }
 
         ResultRessource modelResult = mapResults.get("28");
@@ -42,11 +42,11 @@ public class VehicleMapper {
         try {
             model = modelService.getByCode(modelResult.getValueId());
         } catch (ModelNotFoundException e) {
-            model = new ModelRessource(-1, make, modelResult.getValueId(), modelResult.getValue());
+            model = new ModelRessource(null, make, modelResult.getValueId(), modelResult.getValue());
         }
 
         ResultRessource yearResult = mapResults.get("29");
         Integer year = Integer.parseInt(yearResult.getValue());
-        return new CarRessource(-1, model, year, vin, "");
+        return new CarRessource(null, model, year, vin, "");
     }
 }
