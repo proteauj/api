@@ -3,11 +3,6 @@ package com.versatile.api.entity;
 import javax.persistence.*;
 
 @Entity
-/*
-@SecondaryTables(value = {
-        @SecondaryTable(name = "user_type", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_type", foreignKey = @ForeignKey(name = "id_type"))),
-        @SecondaryTable(name = "user_role", pkJoinColumns = @PrimaryKeyJoinColumn(referencedColumnName = "fk_role", foreignKey = @ForeignKey(name = "id_role")))
-})*/
 public class Employee {
 
     @Id
