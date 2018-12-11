@@ -9,7 +9,7 @@ public class Model {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_make")
     private Make make;
 

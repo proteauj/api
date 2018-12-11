@@ -13,7 +13,7 @@ public class LogIn {
     @Column(name = "nb_failed_login")
     private Integer nbFailedLogin;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_user")
     private Employee user;
 

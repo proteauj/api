@@ -6,16 +6,16 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer idUser;
     private String email;
     private String name;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_role")
     private UserRole role;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_type")
     private UserType type;
 

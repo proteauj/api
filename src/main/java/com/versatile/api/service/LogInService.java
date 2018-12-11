@@ -39,9 +39,11 @@ public class LogInService {
     }
 
     public LogInRessource save(LogInRessource logIn) {
-        LogInRessource logInWithSameUser = getLogInByUser(logIn.getUser());
-        if (logInWithSameUser != null) {
-            return updateLogIn(logIn, logInWithSameUser.getId());
+        if (logIn.getUser().getIdUser() != null) {
+            LogInRessource logInWithSameUser = getLogInByUser(logIn.getUser());
+            if (logInWithSameUser != null) {
+                return updateLogIn(logIn, logInWithSameUser.getId());
+            }
         }
 
         LogIn logInEntity = mapper.modelToEntity(logIn);

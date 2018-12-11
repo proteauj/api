@@ -1,7 +1,7 @@
 package com.versatile.api.ressource;
 
 public class UserRessource {
-    int idUser;
+    Integer idUser;
     String email;
     String name;
     UserRoleRessource role;
@@ -10,7 +10,7 @@ public class UserRessource {
     public UserRessource() {
     }
 
-    public UserRessource(int idUser, String email, String name, UserRoleRessource role, UserTypeRessource type) {
+    public UserRessource(Integer idUser, String email, String name, UserRoleRessource role, UserTypeRessource type) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
@@ -18,11 +18,11 @@ public class UserRessource {
         this.type = type;
     }
 
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
