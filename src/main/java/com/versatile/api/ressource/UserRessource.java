@@ -6,16 +6,18 @@ public class UserRessource {
     String name;
     UserRoleRessource role;
     UserTypeRessource type;
+    byte[] image;
 
     public UserRessource() {
     }
 
-    public UserRessource(Integer idUser, String email, String name, UserRoleRessource role, UserTypeRessource type) {
+    public UserRessource(Integer idUser, String email, String name, UserRoleRessource role, UserTypeRessource type, byte[] image) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
         this.role = role;
         this.type = type;
+        this.image = image;
     }
 
     public Integer getIdUser() {
@@ -56,5 +58,13 @@ public class UserRessource {
 
     public void setType(UserTypeRessource type) {
         this.type = type;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

@@ -1,6 +1,7 @@
 package com.versatile.api.entity;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 public class Employee {
@@ -19,14 +20,17 @@ public class Employee {
     @JoinColumn(name = "fk_type")
     private UserType type;
 
+    private byte[] image;
+
     public Employee() {}
 
-    public Employee(Integer idUser, String email, String name, UserRole role, UserType type) {
+    public Employee(Integer idUser, String email, String name, UserRole role, UserType type, byte[] image) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
         this.role = role;
         this.type = type;
+        this.image = image;
     }
 
     public Integer getIdUser() {
@@ -69,14 +73,23 @@ public class Employee {
         this.type = type;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "idUser=" + idUser +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", role=" + role.toString() +
-                ", type=" + type.toString() +
+                ", role=" + role +
+                ", type=" + type +
+                ", image=" + Arrays.toString(image) +
                 '}';
     }
 }
