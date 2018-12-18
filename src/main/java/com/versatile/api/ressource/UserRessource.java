@@ -1,21 +1,23 @@
 package com.versatile.api.ressource;
 
+import java.util.List;
+
 public class UserRessource {
     Integer idUser;
     String email;
     String name;
-    UserRoleRessource role;
+    List<UserRoleRessource> roles;
     UserTypeRessource type;
     byte[] image;
 
     public UserRessource() {
     }
 
-    public UserRessource(Integer idUser, String email, String name, UserRoleRessource role, UserTypeRessource type, byte[] image) {
+    public UserRessource(Integer idUser, String email, String name, List<UserRoleRessource> roles, UserTypeRessource type, byte[] image) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
-        this.role = role;
+        this.roles = roles;
         this.type = type;
         this.image = image;
     }
@@ -44,14 +46,6 @@ public class UserRessource {
         this.name = name;
     }
 
-    public UserRoleRessource getRole() {
-        return role;
-    }
-
-    public void setRole(UserRoleRessource role) {
-        this.role = role;
-    }
-
     public UserTypeRessource getType() {
         return type;
     }
@@ -66,5 +60,13 @@ public class UserRessource {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public List<UserRoleRessource> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRoleRessource> roles) {
+        this.roles = roles;
     }
 }

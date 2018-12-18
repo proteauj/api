@@ -71,8 +71,9 @@ public class UserService {
                 .map(oldUser -> {
                     oldUser.setEmail(newUser.getEmail());
                     oldUser.setName(newUser.getName());
-                    oldUser.setRole(newUser.getRole());
                     oldUser.setType(newUser.getType());
+                    oldUser.setImage(newUser.getImage());
+                    oldUser.setRoles(newUser.getRoles());
                     return mapper.entityToModel(repository.save(oldUser));
                 })
                 .orElseGet(() -> {
@@ -106,7 +107,7 @@ public class UserService {
         List<UserRessource> users = new ArrayList<>();
 
         if (role.isPresent()) {
-            users = mapper.entitiesToModels(repository.findByRole(role.get()));
+            //users = mapper.entitiesToModels(repository.findByRole(role.get()));
         }
 
         return users;

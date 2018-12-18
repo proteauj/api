@@ -1,6 +1,7 @@
 package com.versatile.api.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class UserRole {
@@ -9,6 +10,9 @@ public class UserRole {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer idRole;
     private String description;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<Employee> employees;
 
     public UserRole() {
     }

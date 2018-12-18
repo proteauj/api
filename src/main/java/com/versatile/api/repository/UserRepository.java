@@ -14,5 +14,5 @@ public interface UserRepository extends CrudRepository<Employee, Integer> {
 
     Employee save(Employee user);
 
-    List<Employee> findByRole(UserRole role);
+    //List<Employee> findByRole(UserRole role);
 }

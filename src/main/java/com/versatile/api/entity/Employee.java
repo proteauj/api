@@ -2,6 +2,7 @@ package com.versatile.api.entity;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -13,24 +14,28 @@ public class Employee {
     private String name;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_role")
-    private UserRole role;
-
-    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_type")
     private UserType type;
 
     private byte[] image;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "employee_role",
+            joinColumns = { @JoinColumn(name = "fk_user") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_role") }
+    )
+    private List<UserRole> roles;
+
     public Employee() {}
 
-    public Employee(Integer idUser, String email, String name, UserRole role, UserType type, byte[] image) {
+    public Employee(Integer idUser, String email, String name, UserType type, byte[] image, List<UserRole> roles) {
         this.idUser = idUser;
         this.email = email;
         this.name = name;
-        this.role = role;
         this.type = type;
         this.image = image;
+        this.roles = roles;
     }
 
     public Integer getIdUser() {
@@ -57,14 +62,6 @@ public class Employee {
         this.name = name;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
     public UserType getType() {
         return type;
     }
@@ -81,15 +78,23 @@ public class Employee {
         this.image = image;
     }
 
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "idUser=" + idUser +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", role=" + role +
                 ", type=" + type +
                 ", image=" + Arrays.toString(image) +
+                ", roles=" + roles +
                 '}';
     }
 }
