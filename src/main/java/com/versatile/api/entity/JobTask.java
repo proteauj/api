@@ -25,7 +25,7 @@ public class JobTask {
     @JoinColumn(name = "fk_role")
     private UserRole role;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "fk_user")
     private Employee user;
 
