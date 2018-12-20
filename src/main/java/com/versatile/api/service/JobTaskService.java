@@ -1,8 +1,11 @@
 package com.versatile.api.service;
 
 import com.versatile.api.entity.*;
+import com.versatile.api.exception.JobAlreadyExistException;
+import com.versatile.api.exception.JobTaskActivityNotFoundException;
 import com.versatile.api.exception.JobTaskNotFoundException;
 import com.versatile.api.mapper.*;
+import com.versatile.api.repository.JobTaskActivityRepository;
 import com.versatile.api.repository.JobTaskRepository;
 import com.versatile.api.ressource.*;
 import org.springframework.beans.factory.annotation.Autowired;

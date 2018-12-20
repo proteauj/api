@@ -2,10 +2,7 @@ package com.versatile.api.controller;
 
 import com.versatile.api.exception.*;
 import com.versatile.api.ressource.*;
-import com.versatile.api.service.JobService;
-import com.versatile.api.service.JobTaskService;
-import com.versatile.api.service.StatusService;
-import com.versatile.api.service.UserService;
+import com.versatile.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,7 +76,6 @@ public class JobTaskController {
 
     @DeleteMapping("/jobs/tasks/{id}")
     void deleteJobTask(@PathVariable int id) {
-
         jobTaskService.deleteById(id);
     }
 }
