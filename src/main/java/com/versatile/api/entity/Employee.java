@@ -19,7 +19,7 @@ public class Employee {
 
     private byte[] image;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(
             name = "employee_role",
             joinColumns = { @JoinColumn(name = "fk_user") },

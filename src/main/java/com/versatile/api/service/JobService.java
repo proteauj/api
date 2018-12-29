@@ -1,22 +1,35 @@
 package com.versatile.api.service;
 
 import com.versatile.api.entity.Job;
+import com.versatile.api.entity.Make;
+import com.versatile.api.entity.Model;
 import com.versatile.api.exception.JobAlreadyExistException;
 import com.versatile.api.exception.JobNotFoundException;
+import com.versatile.api.exception.MakeNotFoundException;
+import com.versatile.api.exception.ModelNotFoundException;
 import com.versatile.api.mapper.JobMapper;
 import com.versatile.api.mapper.StatusMapper;
 import com.versatile.api.repository.JobRepository;
+import com.versatile.api.repository.MakeRepository;
+import com.versatile.api.repository.ModelRepository;
 import com.versatile.api.ressource.JobRessource;
 import com.versatile.api.ressource.StatusRessource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobService {
     @Autowired
     JobRepository repository;
+
+    @Autowired
+    ModelRepository modelRepository;
+
+    @Autowired
+    MakeRepository makeRepository;
 
     @Autowired
     JobMapper mapper;
@@ -37,8 +50,21 @@ public class JobService {
         return mapper.entitiesToModels(repository.findByStatus(statusMapper.modelToEntity(status)));
     }
 
-    public JobRessource save(JobRessource job) throws JobAlreadyExistException {
+    public JobRessource save(JobRessource job) throws JobAlreadyExistException, MakeNotFoundException, ModelNotFoundException {
         Job jobEntity = mapper.modelToEntity(job);
+
+        Integer idMake = jobEntity.getCar().getModel().getMake().getId();
+        if (idMake != null && idMake >0) {
+            jobEntity.getCar().getModel().setMake(makeRepository.findById(idMake)
+                    .orElseThrow(() -> new MakeNotFoundException(idMake)));
+        }
+
+        Integer idModel = jobEntity.getCar().getModel().getId();
+        if (idModel != null && idModel > 0) {
+            jobEntity.getCar().setModel(modelRepository.findById(idModel)
+                    .orElseThrow(() -> new ModelNotFoundException(idModel)));
+        }
+
         return mapper.entityToModel(repository.save(jobEntity));
     }
 

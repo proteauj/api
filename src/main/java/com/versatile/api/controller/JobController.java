@@ -2,6 +2,8 @@ package com.versatile.api.controller;
 
 import com.versatile.api.exception.JobAlreadyExistException;
 import com.versatile.api.exception.JobNotFoundException;
+import com.versatile.api.exception.MakeNotFoundException;
+import com.versatile.api.exception.ModelNotFoundException;
 import com.versatile.api.ressource.JobRessource;
 import com.versatile.api.ressource.JobTaskRessource;
 import com.versatile.api.ressource.StatusRessource;
@@ -43,7 +45,7 @@ public class JobController {
     }
 
     @PostMapping("/jobs")
-    JobRessource createJob(@RequestBody JobRessource job) throws JobAlreadyExistException {
+    JobRessource createJob(@RequestBody JobRessource job) throws JobAlreadyExistException, ModelNotFoundException, MakeNotFoundException {
         return jobService.save(job);
     }
 

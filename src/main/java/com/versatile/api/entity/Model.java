@@ -1,5 +1,7 @@
 package com.versatile.api.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,7 @@ public class Model {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_make")
     private Make make;
 
