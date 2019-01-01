@@ -1,12 +1,11 @@
 package com.versatile.api.controller;
 
-import com.versatile.api.exception.JobAlreadyExistException;
-import com.versatile.api.exception.JobNotFoundException;
-import com.versatile.api.exception.MakeNotFoundException;
-import com.versatile.api.exception.ModelNotFoundException;
+import com.versatile.api.exception.*;
+import com.versatile.api.ressource.ClientRessource;
 import com.versatile.api.ressource.JobRessource;
 import com.versatile.api.ressource.JobTaskRessource;
 import com.versatile.api.ressource.StatusRessource;
+import com.versatile.api.service.ClientService;
 import com.versatile.api.service.JobService;
 import com.versatile.api.service.JobTaskService;
 import com.versatile.api.service.StatusService;
@@ -27,6 +26,9 @@ public class JobController {
     @Autowired
     StatusService statusService;
 
+    @Autowired
+    ClientService clientService;
+
     @GetMapping("/jobs")
     public List<JobRessource> getJobs(@RequestParam(value="status", required=false) String statusStr) {
         if (statusStr == null) {
@@ -37,11 +39,15 @@ public class JobController {
         }
     }
 
-
-
     @GetMapping("/jobs/{id}")
     JobRessource getById(@PathVariable int id) throws JobNotFoundException {
         return jobService.getById(id);
+    }
+
+    @GetMapping("/jobs/clients/{id}")
+    List<JobRessource> getByClient(@PathVariable int id) throws ClientNotFoundException {
+        ClientRessource client = clientService.getById(id);
+        return jobService.getByClient(client);
     }
 
     @PostMapping("/jobs")

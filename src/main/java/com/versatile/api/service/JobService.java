@@ -7,11 +7,13 @@ import com.versatile.api.exception.JobAlreadyExistException;
 import com.versatile.api.exception.JobNotFoundException;
 import com.versatile.api.exception.MakeNotFoundException;
 import com.versatile.api.exception.ModelNotFoundException;
+import com.versatile.api.mapper.ClientMapper;
 import com.versatile.api.mapper.JobMapper;
 import com.versatile.api.mapper.StatusMapper;
 import com.versatile.api.repository.JobRepository;
 import com.versatile.api.repository.MakeRepository;
 import com.versatile.api.repository.ModelRepository;
+import com.versatile.api.ressource.ClientRessource;
 import com.versatile.api.ressource.JobRessource;
 import com.versatile.api.ressource.StatusRessource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,9 @@ public class JobService {
     @Autowired
     StatusMapper statusMapper;
 
+    @Autowired
+    ClientMapper clientMapper;
+
     public List<JobRessource> getJobs() {
         return mapper.entitiesToModels(repository.findAll());
     }
@@ -48,6 +53,10 @@ public class JobService {
 
     public List<JobRessource> getByStatus(StatusRessource status) {
         return mapper.entitiesToModels(repository.findByStatus(statusMapper.modelToEntity(status)));
+    }
+
+    public List<JobRessource> getByClient(ClientRessource client) {
+        return mapper.entitiesToModels(repository.findByClient(clientMapper.modelToEntity(client)));
     }
 
     public JobRessource save(JobRessource job) throws JobAlreadyExistException, MakeNotFoundException, ModelNotFoundException {

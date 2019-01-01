@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {StatusMapper.class})
+@Mapper(componentModel = "spring", uses = {StatusMapper.class, ClientMapper.class})
 public interface JobMapper {
     JobRessource entityToModel(Job job);
 
