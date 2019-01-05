@@ -9,18 +9,20 @@ public class JobRessource {
     private String description;
     private Date arrivalDate;
     private Date toDeliverDate;
+    private String numJobClient;
     private ClientRessource client;
 
     public JobRessource() {
     }
 
-    public JobRessource(Integer idJob, CarRessource car, StatusRessource status, String description, Date arrivalDate, Date toDeliverDate, ClientRessource client) {
+    public JobRessource(Integer idJob, CarRessource car, StatusRessource status, String description, Date arrivalDate, Date toDeliverDate, String numJobClient, ClientRessource client) {
         this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
         this.arrivalDate = arrivalDate;
         this.toDeliverDate = toDeliverDate;
+        this.numJobClient = numJobClient;
         this.client = client;
     }
 
@@ -70,6 +72,14 @@ public class JobRessource {
 
     public void setToDeliverDate(Date toDeliverDate) {
         this.toDeliverDate = toDeliverDate;
+    }
+
+    public String getNumJobClient() {
+        return numJobClient;
+    }
+
+    public void setNumJobClient(String numJobClient) {
+        this.numJobClient = numJobClient;
     }
 
     public ClientRessource getClient() {

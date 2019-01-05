@@ -21,6 +21,7 @@ public class Job {
     private String description;
     private Date arrivalDate;
     private Date toDeliverDate;
+    private String numJobClient;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_client")
@@ -29,13 +30,14 @@ public class Job {
     public Job() {
     }
 
-    public Job(Integer idJob, Car car, Status status, String description, Date arrivalDate, Date toDeliverDate, Client client) {
+    public Job(Integer idJob, Car car, Status status, String description, Date arrivalDate, Date toDeliverDate, String numJobClient, Client client) {
         this.idJob = idJob;
         this.car = car;
         this.status = status;
         this.description = description;
         this.arrivalDate = arrivalDate;
         this.toDeliverDate = toDeliverDate;
+        this.numJobClient = numJobClient;
         this.client = client;
     }
 
@@ -87,6 +89,14 @@ public class Job {
         this.toDeliverDate = toDeliverDate;
     }
 
+    public String getNumJobClient() {
+        return numJobClient;
+    }
+
+    public void setNumJobClient(String numJobClient) {
+        this.numJobClient = numJobClient;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -104,6 +114,7 @@ public class Job {
                 ", description='" + description + '\'' +
                 ", arrivalDate=" + arrivalDate +
                 ", toDeliverDate=" + toDeliverDate +
+                ", numJobClient='" + numJobClient + '\'' +
                 ", client=" + client +
                 '}';
     }
